@@ -1,15 +1,57 @@
 @import url("https://fonts.googleapis.com/css2?family=Tilt+Prism&display=swap");
 
+:root {
+  --firstText: greenyellow;
+  --secondText: orangered;
+}
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Tilt Prism", cursive;
 }
-html,
 body {
   width: 100vw;
   height: 100vh;
   background-image: url("/assets/images/appBG.png");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-color: black;
+}
+
+header {
+  width: 100%;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  color: black;
+  font-size: 48px;
+  font-weight: 600;
+  background: linear-gradient(black 10%, transparent);
+}
+.firstText {
+  text-shadow: 0 0 5px white, 0 0 10px var(--firstText), 0 0 20px white,
+    0 0 30px var(--firstText), 0 0 40px white;
+  margin-right: 150px;
+}
+.secondText {
+  text-shadow: 0 0 5px white, 0 0 10px var(--secondText), 0 0 20px white,
+    0 0 30px var(--secondText), 0 0 40px white;
+  margin-right: 50px;
+}
+footer {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: black;
+  text-shadow: 0 0 5px white, 0 0 10px var(--firstText), 0 0 20px white,
+    0 0 30px var(--firstText), 0 0 40px white;
+  background: linear-gradient(to top, black 10%, transparent);
 }
