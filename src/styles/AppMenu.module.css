@@ -25,6 +25,7 @@
   z-index: 10000;
   cursor: pointer;
   transition: transform 1.5s;
+  border-radius: 50%;
 }
 .toggleImage {
   animation: pulse 2s alternate-reverse infinite;
@@ -51,7 +52,7 @@
   align-items: center;
   z-index: -1;
   transform-origin: 200px;
-  transition: 0.5s;
+  transition: 1s;
   display: flex;
   opacity: 0;
 }
@@ -61,4 +62,7 @@
 .activeMenu {
   z-index: 1;
   opacity: 1;
+}
+.itemTooltip {
+  font-size: 20px !important;
 }

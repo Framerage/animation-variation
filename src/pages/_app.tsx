@@ -1,4 +1,4 @@
-import AppLayout from "@/components/appLayout";
+import AppLayout from "@/components/appComponents/appLayout";
 import { store } from "@/store";
 import "@/styles/globalStyles.css";
 import type { AppProps } from "next/app";

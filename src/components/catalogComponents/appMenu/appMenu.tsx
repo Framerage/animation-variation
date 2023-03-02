@@ -3,31 +3,37 @@ import classes from "@/styles/AppMenu.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import cn from "classnames";
-const AppMenu = () => {
+import { Tooltip } from "@material-ui/core";
+interface AppMenuProps {
+  menuItems?: { name: string; image: string; link: string }[];
+}
+const AppMenu: React.FC<AppMenuProps> = ({ menuItems }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const menuItems = [
-    { name: "Home", image: "/assets/images/homeBtn.png", link: "" },
-    { name: "Catalog", image: "/assets/images/catalogBtn.png", link: "" },
-    { name: "Some", image: "/assets/images/menuBtn.png", link: "" },
-    { name: "Ideas", image: "/assets/images/ideasBtn.png", link: "" },
-    { name: "Games", image: "/assets/images/gamesBtn.png", link: "" },
-    { name: "Statistic", image: "/assets/images/statisticBtn.png", link: "" },
-    { name: "Reviews", image: "/assets/images/reviewsBtn.png", link: "" },
-    { name: "Contacts", image: "/assets/images/contactsBtn.png", link: "" },
-  ];
   const onUseMenu = () => setIsMenuOpen(!isMenuOpen);
+  const defaultMenuItems = [
+    { name: "1", image: "", link: "/" },
+    { name: "2", image: "", link: "/" },
+    { name: "3", image: "", link: "/" },
+    { name: "4", image: "", link: "/" },
+    { name: "5", image: "", link: "/" },
+    { name: "6", image: "", link: "/" },
+    { name: "7", image: "", link: "/" },
+    { name: "8", image: "", link: "/" },
+  ];
+  const itemsAmount = menuItems ? menuItems.length : defaultMenuItems.length;
+  const itemsContant = menuItems ? menuItems : defaultMenuItems;
 
   const iconStyle = (elem: number) => {
     return {
       transitionDelay: `calc(0.1s*${elem}`,
       transform: isMenuOpen
-        ? `rotate(calc(360deg / ${menuItems.length} * ${elem + 2}))`
+        ? `rotate(calc(360deg / ${itemsAmount} * ${elem + 2}))`
         : "rotate(0deg) translateX(150px)",
     };
   };
   const imageStyle = (elem: number) => {
     return {
-      transform: `rotate(calc(360deg / ${-menuItems.length} * ${elem + 2}))`,
+      transform: `rotate(calc(360deg / ${-itemsAmount} * ${elem + 2}))`,
     };
   };
   return (
@@ -47,7 +53,7 @@ const AppMenu = () => {
             className={classes.toggleImage}
           />
         </div>
-        {menuItems.map((item, index) => (
+        {itemsContant.map((item, index) => (
           <Link
             href={item.link}
             key={item.name}
@@ -56,13 +62,15 @@ const AppMenu = () => {
             })}
             style={iconStyle(index)}
           >
-            <Image
-              src={item.image}
-              alt="menuItem"
-              width={50}
-              height={50}
-              style={imageStyle(index)}
-            />
+            <Tooltip className={classes.itemTooltip} title={item.name}>
+              <Image
+                src={item.image}
+                alt="menuItem"
+                width={50}
+                height={50}
+                style={imageStyle(index)}
+              />
+            </Tooltip>
           </Link>
         ))}
       </nav>

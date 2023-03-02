@@ -1,0 +1,67 @@
+.cubeContainer {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  animation: animateCube 10s linear infinite;
+}
+@keyframes animateCube {
+  0% {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+.cubeContainer .cube {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.cubeContainer .cube .cubeWall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(60deg, yellow, rgb(255, 140, 0), red, black);
+  transform: rotateY(calc(90deg * var(--elem))) translateZ(150px);
+}
+.cubeShadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  background: #222;
+  transform-style: preserve-3d;
+  transform: rotateY(calc(90deg)) rotateX(90deg) translateZ(150px);
+}
+.cubeShadow::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 200px;
+  height: 200px;
+  animation: flame 4.5s linear infinite;
+  border-radius: 30%;
+  box-shadow: 0 0 50px rgb(79, 3, 3), 0 0 100px red, 0 0 150px red,
+    0 0 250px orange, 0 0 300px yellow, 0 0 350px yellow;
+  filter: blur(20px);
+  transition: 2s linear infinite;
+}
+@keyframes flame {
+  0% {
+    transform: scale(1) translateZ(-400px);
+  }
+  50% {
+    transform: scale(1.6) translateZ(-400px);
+  }
+  100% {
+    transform: scale(1) translateZ(-400px);
+  }
+}
