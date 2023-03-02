@@ -23,13 +23,19 @@ header {
   width: 100%;
   min-height: 50px;
   display: flex;
-  flex-direction: column;
-  align-items: end;
-  justify-content: center;
-  color: black;
+  align-items: center;
+  justify-content: space-between;
   font-size: 48px;
   font-weight: 600;
   background: linear-gradient(black 10%, transparent);
+}
+.appName {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  text-decoration: none;
+  color: black;
 }
 .firstText {
   text-shadow: 0 0 5px white, 0 0 10px var(--firstText), 0 0 20px white,
@@ -44,7 +50,7 @@ header {
 footer {
   width: 100%;
   height: 100px;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   display: flex;
   align-items: center;
