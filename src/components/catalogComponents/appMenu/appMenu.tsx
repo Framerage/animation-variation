@@ -11,14 +11,14 @@ const AppMenu: React.FC<AppMenuProps> = ({ menuItems }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const onUseMenu = () => setIsMenuOpen(!isMenuOpen);
   const defaultMenuItems = [
-    { name: "1", image: "", link: "/" },
-    { name: "2", image: "", link: "/" },
-    { name: "3", image: "", link: "/" },
-    { name: "4", image: "", link: "/" },
-    { name: "5", image: "", link: "/" },
-    { name: "6", image: "", link: "/" },
-    { name: "7", image: "", link: "/" },
-    { name: "8", image: "", link: "/" },
+    { name: "1", image: "/assets/images/defaultImg.png", link: "/" },
+    { name: "2", image: "/assets/images/defaultImg.png", link: "/" },
+    { name: "3", image: "/assets/images/defaultImg.png", link: "/" },
+    { name: "4", image: "/assets/images/defaultImg.png", link: "/" },
+    { name: "5", image: "/assets/images/defaultImg.png", link: "/" },
+    { name: "6", image: "/assets/images/defaultImg.png", link: "/" },
+    { name: "7", image: "/assets/images/defaultImg.png", link: "/" },
+    { name: "8", image: "/assets/images/defaultImg.png", link: "/" },
   ];
   const itemsAmount = menuItems ? menuItems.length : defaultMenuItems.length;
   const itemsContant = menuItems ? menuItems : defaultMenuItems;
@@ -56,7 +56,7 @@ const AppMenu: React.FC<AppMenuProps> = ({ menuItems }) => {
         {itemsContant.map((item, index) => (
           <Link
             href={item.link}
-            key={item.name}
+            key={item.name + ":" + index}
             className={cn(classes.menuItem, {
               [classes.activeMenu]: isMenuOpen,
             })}

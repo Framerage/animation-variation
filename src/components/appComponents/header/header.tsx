@@ -1,10 +1,12 @@
+import Searcher from "@/components/catalogComponents/searcher";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 
 const Header = () => {
+  const [searchValue, setSearchValue] = useState("");
   return (
     <header>
-      <input type="text" />
+      <Searcher inputValue={searchValue} onChangeInputValue={setSearchValue} />
       <Link href="/" className="appName">
         <span className="firstText">Animation</span>
         <span className="secondText">Variation</span>

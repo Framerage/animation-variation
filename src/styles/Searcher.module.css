@@ -1,0 +1,85 @@
+.searcherContainer {
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.inputContainer {
+  display: none;
+  width: min-content;
+  position: relative;
+}
+.inputBlock {
+  background-color: #44414e;
+  width: 320px;
+  min-height: 50px;
+  border: transparent;
+  border-radius: 32px;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  color: #c4c1cf;
+  animation: range 2s;
+  padding: 10px;
+}
+@keyframes range {
+  from {
+    width: 100px;
+  }
+  to {
+    width: 320px;
+  }
+}
+.searcherBtn {
+  background-color: #44414e;
+  width: 100px;
+  height: 50px;
+  border: none;
+  border-radius: 32px;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  color: #c4c1cf;
+  cursor: pointer;
+  z-index: 10001;
+  display: none;
+}
+.searcherBtn:active {
+  border: 1px solid yellowgreen;
+  background-color: #0e0d13;
+  color: yellowgreen;
+}
+.activeSearcher {
+  display: flex;
+}
+.activeBtn {
+  display: block;
+}
+.searcherIconBlock {
+  background-color: #84818e;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 276px;
+  cursor: pointer;
+  animation: rotate 2s;
+  position: absolute;
+}
+.searcherIcon {
+  position: absolute;
+  z-index: 101;
+}
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
+    left: 0;
+  }
+  to {
+    transform: rotateZ(360deg);
+    left: 276px;
+  }
+}
