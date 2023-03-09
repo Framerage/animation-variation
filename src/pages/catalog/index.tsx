@@ -13,6 +13,7 @@ const Catalog = () => {
         <div className={classes.menuContainer}>
           {CATALOG_COMPONENTS.map((item, index) => (
             <div
+              key={item.name + ":" + index}
               className={cn(classes.menuItem, {
                 [classes.choosedItem]: choosedItem === index,
               })}
@@ -23,7 +24,7 @@ const Catalog = () => {
           ))}
         </div>
         <div className={classes.previewWindow}>
-          {CATALOG_COMPONENTS[choosedItem].component}
+          {CATALOG_COMPONENTS[choosedItem].component || "Soon add..."}
         </div>
       </div>
     </div>
