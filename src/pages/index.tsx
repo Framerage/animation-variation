@@ -9,7 +9,7 @@ export default function Home() {
       image: "/assets/images/catalogBtn.png",
       link: "/catalog",
     },
-    { name: "About", image: "/assets/images/menuBtn.png", link: "" },
+    { name: "About", image: "/assets/images/aboutBtn.png", link: "/about" },
     { name: "Ideas", image: "/assets/images/ideasBtn.png", link: "" },
     { name: "Games", image: "/assets/images/gamesBtn.png", link: "" },
     { name: "Statistic", image: "/assets/images/statisticBtn.png", link: "" },
