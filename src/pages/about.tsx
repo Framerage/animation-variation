@@ -13,13 +13,13 @@ const About = () => {
       </div>
       <div className={classes.projectText}>
         <span>
-          Все источники Вы можете найти на{" "}
+          Все источники Вы можете найти на
           <Link
             className={classes.youtubeLink}
             href={"https://www.youtube.com/"}
           >
             Youtube
-          </Link>{" "}
+          </Link>
           , а некоторые по этим ссылкам &dArr;
         </span>
         <ul>
