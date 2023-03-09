@@ -9,6 +9,7 @@
   margin: 0 auto;
   position: relative;
   margin-bottom: 100px;
+  border-radius: 50px;
 }
 .catalogMenu {
   display: flex;
@@ -63,13 +64,66 @@
   }
 }
 .previewWindow {
-  position: relative;
-  min-width: 1000px;
-  min-height: 600px;
+  min-width: 800px;
+  max-width: 1000px;
+  min-height: 300px;
   display: flex;
-  align-items: flex-start;
-  padding-top: 100px;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   color: white;
   font-size: 26px;
+  margin-top: 20px;
+}
+.previewInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+.itemReviews {
+  position: absolute;
+  width: 190px;
+  min-height: 100px;
+  max-height: 300px;
+  background: linear-gradient(45deg, grey, white, grey);
+  border: 6px double black;
+  border-radius: 20px;
+  top: 50px;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-between;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 16px;
+  color: black;
+  padding: 5px;
+  word-wrap: break-word;
+  overflow-y: auto;
+}
+.itemReviews::-webkit-scrollbar {
+  width: 10px;
+}
+.itemReviews::-webkit-scrollbar-track {
+  background: transparent;
+}
+.itemReviews::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 20px;
+}
+.reviewsInput {
+  max-width: 150px;
+  height: 25px;
+  background-color: white;
+  border-radius: 20px;
+  padding: 5px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin-top: 10px;
+}
+.previewItem {
+  padding-top: 50px;
+  transform: scale(0.6);
+  position: relative;
 }

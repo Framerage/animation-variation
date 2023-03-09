@@ -24,7 +24,31 @@ const Catalog = () => {
           ))}
         </div>
         <div className={classes.previewWindow}>
-          {CATALOG_COMPONENTS[choosedItem].component || "Soon add..."}
+          <div className={classes.previewInfo}>
+            <span>Отзывов: 0</span>
+            <span>{CATALOG_COMPONENTS[choosedItem].name}</span>
+            <span>Лайков:</span>
+            <div className={classes.itemReviews}>
+              gecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnjg
+              ecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnj
+              gecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnjg
+              ecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnj
+              gecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnjg
+              ecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnj
+              gecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnjg
+              ecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnj
+              gecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnjg
+              ecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnj
+              gecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnjg
+              ecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnj
+              gecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnjg
+              ecnjge cnjgecnj gecnjge cnjgecnjgecn jgecnjgecnj gecn jgecnj
+              <input type="text" className={classes.reviewsInput} />
+            </div>
+          </div>
+          <div className={classes.previewItem}>
+            {CATALOG_COMPONENTS[choosedItem].component || "Soon add..."}
+          </div>
         </div>
       </div>
     </div>
