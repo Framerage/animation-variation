@@ -9,3 +9,23 @@ export const CATALOG_COMPONENTS: CatalogComponents[] = [
   { name: "searcher", component: <Searcher /> },
   { name: "searcher", component: "" },
 ];
+export const APP_THEME_LEFT = [
+  "red",
+  "orange",
+  "yellow",
+  "yellowgreen",
+  "green",
+  "blue",
+  "lightblue",
+  "white",
+];
+export const APP_THEMES_RIGHT = [
+  "lightpink",
+  "pink",
+  "violet",
+  "red",
+  "orangered",
+  "red",
+  "brown",
+  "black",
+];

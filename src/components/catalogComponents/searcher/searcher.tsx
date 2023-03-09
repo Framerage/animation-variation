@@ -1,5 +1,4 @@
-import React, { ChangeEvent, ChangeEventHandler, useState } from "react";
-// import searchIcon from "./assets/icons/searchIcon.png";
+import React, { useState } from "react";
 import classes from "@/styles/Searcher.module.css";
 import cn from "classnames";
 import Image from "next/image";

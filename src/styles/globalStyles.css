@@ -3,6 +3,10 @@
 :root {
   --firstText: greenyellow;
   --secondText: orangered;
+  --firstTheme: red;
+  --secondTheme: white;
+  --leftRange: pink;
+  --rightRange: lightblue;
 }
 * {
   margin: 0;
@@ -10,24 +14,28 @@
   box-sizing: border-box;
   font-family: "Tilt Prism", cursive;
 }
-body {
-  width: 100vw;
-  height: 100vh;
-  background-image: url("/assets/images/appBG.png");
-  background-size: cover;
+html {
+  max-width: 100vw;
+  min-height: 100vh;
+  background: linear-gradient(45deg, var(--firstTheme), var(--secondTheme));
   background-repeat: no-repeat;
-  background-color: black;
 }
 
 header {
   width: 100%;
-  min-height: 50px;
+  min-height: 150px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   font-size: 48px;
   font-weight: 600;
   background: linear-gradient(black 10%, transparent);
+}
+.headerText {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .appName {
   display: flex;
@@ -46,6 +54,42 @@ header {
   text-shadow: 0 0 5px white, 0 0 10px var(--secondText), 0 0 20px white,
     0 0 30px var(--secondText), 0 0 40px white;
   margin-right: 50px;
+}
+.appThemes {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 50px;
+}
+.leftRange {
+  background: linear-gradient(to right, var(--leftRange));
+}
+.rightRange {
+  background: linear-gradient(to right, var(--rightRange));
+}
+.themeRange {
+  width: 45%;
+  -webkit-appearance: none !important;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 20px;
+}
+.themeRange::-webkit-slider-thumb {
+  -webkit-appearance: none !important;
+  background: black;
+  border: 1px solid white;
+  border-radius: 7px;
+  height: 15px;
+  width: 15px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+.themeRange:hover {
+  opacity: 1;
+  border: 2px solid white;
 }
 footer {
   width: 100%;
