@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import classes from "@/styles/Catalog.module.css";
 import cn from "classnames";
 import { CATALOG_COMPONENTS } from "@/constants/componentsBase";

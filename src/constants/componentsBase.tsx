@@ -1,5 +1,6 @@
 import AppMenu from "@/components/catalogComponents/appMenu";
 import BulkCube from "@/components/catalogComponents/bulkCube";
+import Loader from "@/components/catalogComponents/loader/loader";
 import Searcher from "@/components/catalogComponents/searcher";
 import { ReactNode } from "react";
 
@@ -18,7 +19,7 @@ export const CATALOG_COMPONENTS: { name: string; component?: ReactNode }[] = [
   },
   {
     name: "loader",
-    component: "",
+    component: <Loader />,
   },
   {
     name: "counter",
