@@ -1,13 +1,30 @@
 import AppMenu from "@/components/catalogComponents/appMenu";
 import BulkCube from "@/components/catalogComponents/bulkCube";
+import Loader from "@/components/catalogComponents/loader/loader";
 import Searcher from "@/components/catalogComponents/searcher";
-import { CatalogComponents } from "@/typing/catalog";
+import { ReactNode } from "react";
 
-export const CATALOG_COMPONENTS: CatalogComponents[] = [
-  { name: "menu", component: <AppMenu /> },
-  { name: "cube", component: <BulkCube /> },
-  { name: "searcher", component: <Searcher /> },
-  { name: "searcher", component: "" },
+export const CATALOG_COMPONENTS: { name: string; component?: ReactNode }[] = [
+  {
+    name: "menu",
+    component: <AppMenu />,
+  },
+  {
+    name: "cube",
+    component: <BulkCube />,
+  },
+  {
+    name: "searcher",
+    component: <Searcher />,
+  },
+  {
+    name: "loader",
+    component: <Loader />,
+  },
+  {
+    name: "counter",
+    component: "",
+  },
 ];
 export const APP_THEME_LEFT = [
   "red",
