@@ -10,7 +10,7 @@
   box-shadow: 0 0 5px grey, 0 0 10px white, 0 0 15px white;
 }
 .projectText {
-  padding: 15px 0;
+  padding: 15px;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 600;
 }

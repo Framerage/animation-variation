@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "@/styles/AppMenu.module.css";
+import classes from "@/styles/catalogComponents/AppMenu.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import cn from "classnames";

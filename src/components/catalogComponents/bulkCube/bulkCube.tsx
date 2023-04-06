@@ -1,5 +1,5 @@
 import React from "react";
-import classes from "@/styles/BulkCube.module.css";
+import classes from "@/styles/catalogComponents/BulkCube.module.css";
 
 const BulkCube = () => {
   const figureWalls = [

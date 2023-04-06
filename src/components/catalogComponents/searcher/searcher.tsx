@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import classes from "@/styles/Searcher.module.css";
+import classes from "@/styles/catalogComponents/Searcher.module.css";
 import cn from "classnames";
 import Image from "next/image";
 interface SearcherProps {
