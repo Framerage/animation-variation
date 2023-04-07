@@ -21,10 +21,6 @@ export const CATALOG_COMPONENTS: { name: string; component?: ReactNode }[] = [
     name: "loader",
     component: <Loader />,
   },
-  {
-    name: "counter",
-    component: "",
-  },
 ];
 export const APP_THEME_LEFT = [
   "red",

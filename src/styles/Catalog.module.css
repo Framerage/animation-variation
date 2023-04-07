@@ -100,8 +100,8 @@
 }
 .itemReviews {
   position: absolute;
-  width: 190px;
-  min-height: 100px;
+  width: 200px;
+  min-height: 200px;
   max-height: 300px;
   background: linear-gradient(45deg, grey, white, grey);
   border: 6px double black;
@@ -112,34 +112,76 @@
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
+  padding: 5px;
+}
+.reviewsBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  width: 100%;
+  min-height: 100px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+.review {
+  width: 160px;
+  word-wrap: break-word;
+  border-bottom: 1px solid black;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 16px;
   color: black;
-  padding: 5px;
-  word-wrap: break-word;
-  overflow-y: auto;
 }
-.itemReviews::-webkit-scrollbar {
+.reviewsBlock::-webkit-scrollbar {
   width: 10px;
 }
-.itemReviews::-webkit-scrollbar-track {
+.reviewsBlock::-webkit-scrollbar-track {
   background: transparent;
 }
-.itemReviews::-webkit-scrollbar-thumb {
+.reviewsBlock::-webkit-scrollbar-thumb {
   background-color: black;
   border-radius: 20px;
 }
 .reviewsInput {
-  max-width: 150px;
+  max-width: 145px;
   height: 25px;
   background-color: white;
-  border-radius: 20px;
-  padding: 5px;
+  border-radius: 10px;
   font-family: Georgia, "Times New Roman", Times, serif;
-  margin-top: 10px;
+  padding: 5px;
 }
 .previewItem {
   padding-top: 50px;
   transform: scale(0.7);
   position: relative;
+}
+.likesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.likesIcon {
+  background-color: transparent;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.likesIcon:active {
+  transform: scale(1.1);
+}
+.reviewForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+}
+.reviewBtn {
+  text-align: center;
+  border-radius: 30%;
+  width: 30px;
+  height: 25px;
+  color: black;
+  margin-left: 5px;
+  background-color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  cursor: pointer;
 }
