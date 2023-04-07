@@ -27,11 +27,13 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
   const dispatch = useDispatch();
 
   const catalogItems = useSelector(selectCatalogComponents);
+
   const [choosedItem, setChoosedItem] = useState(0);
   const [pagination, setPagination] = useState(0);
   const [inputValue, setInputValue] = useState("");
+  const [inputError, setInputError] = useState("");
   const likeIcon =
-    catalogItems && catalogItems[choosedItem].isLiked
+    catalogItems && catalogItems[choosedItem]?.isLiked
       ? "/assets/icons/likeIcon.svg"
       : "/assets/icons/unlikeIcon.svg";
 
@@ -83,7 +85,10 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
           name: componentName,
         }
       );
-      dispatch(getCatalogComponents([...catalogItems, resp.data]));
+      onEditComponent(resp.data.id, "likes", 0);
+      dispatch(
+        getCatalogComponents([...catalogItems, { ...resp.data, likes: 0 }])
+      );
     } else {
       window.alert("Не угадал");
     }
@@ -96,7 +101,8 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
   };
   const onAddReview = (e: React.FormEvent<HTMLFormElement>, id: number) => {
     e.preventDefault();
-    if (!inputValue) {
+    if (inputValue.length < 4) {
+      setInputError("Не менее 4-х символов");
       return;
     }
     const newCatalog = catalogItems.map((item: CatalogComponents) => {
@@ -108,6 +114,7 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
       }
       return item;
     });
+    setInputError("");
     dispatch(getCatalogComponents(newCatalog));
     onEditComponent(id, "reviews", [
       ...catalogItems[choosedItem].reviews,
@@ -164,7 +171,7 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
           <div className={classes.previewInfo}>
             <span>
               Отзывов:&nbsp;
-              {catalogItems ? catalogItems[choosedItem].reviews.length : 0}
+              {catalogItems ? catalogItems[choosedItem]?.reviews.length : 0}
             </span>
             <span>
               {CATALOG_COMPONENTS[choosedItem]?.name || "Soon add..."}
@@ -194,14 +201,16 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
                     )
                   )}
               </div>
+              <div className={classes.reviewsError}>{inputError}</div>
               <form
                 className={classes.reviewForm}
                 onSubmit={(e) => {
                   onAddReview(e, choosedItem + 1);
                 }}
               >
-                <input
-                  type="text"
+                <textarea
+                  title="Не менее 4-х символов"
+                  // type="text"
                   className={classes.reviewsInput}
                   placeholder="Напишите отзыв"
                   value={inputValue}
