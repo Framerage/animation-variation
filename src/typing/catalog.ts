@@ -7,5 +7,5 @@ export interface CatalogComponents {
   componentId?: string;
   reviews: string[];
   id?: string;
-  isLikes?: boolean;
+  isLiked?: boolean;
 }

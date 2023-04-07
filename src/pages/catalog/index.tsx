@@ -1,4 +1,4 @@
-import React, { ReactElement, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CATALOG_COMPONENTS } from "@/constants/componentsBase";
 import axios from "axios";
 import { CatalogComponents } from "@/typing/catalog";
@@ -86,9 +86,10 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
         }
       );
       onEditComponent(resp.data.id, "likes", 0);
-      dispatch(
-        getCatalogComponents([...catalogItems, { ...resp.data, likes: 0 }])
-      );
+      catalogItems &&
+        dispatch(
+          getCatalogComponents([...catalogItems, { ...resp.data, likes: 0 }])
+        );
     } else {
       window.alert("Не угадал");
     }
