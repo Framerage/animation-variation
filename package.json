@@ -2,13 +2,13 @@
   "name": "animation-variation",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://framerage.github.io/irlixpub/",
+  "homepage": "https://framerage.github.io/animation-variation/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d .next",
     "predeploy": "next build"
   },
   "dependencies": {
