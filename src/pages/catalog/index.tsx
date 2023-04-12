@@ -12,6 +12,7 @@ import {
   selectCatalogComponents,
 } from "@/store/modules/catalogComponents";
 import { editFirstSymbolToUpperCase } from "@/utils/helpers";
+import Heart from "@/components/catalogComponents/heart/heart";
 
 export async function getServerSideProps() {
   const resp = await axios(
@@ -33,9 +34,7 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
   const [inputValue, setInputValue] = useState("");
   const [inputError, setInputError] = useState("");
   const likeIcon =
-    catalogItems && catalogItems[choosedItem]?.isLiked
-      ? "/assets/icons/likeIcon.svg"
-      : "/assets/icons/unlikeIcon.svg";
+    catalogItems && catalogItems[choosedItem]?.isLiked ? "red" : "white";
 
   useEffect(() => {
     if (!catalog) {
@@ -44,24 +43,30 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
     dispatch(getCatalogComponents(catalog));
   }, [catalog]);
 
+  useEffect(() => {
+    document.documentElement.style.setProperty("--smallheartbg", `${likeIcon}`);
+  }, [choosedItem]);
   const onChooseItem = (index: number) => setChoosedItem(index);
 
   const onLikeComponent = () => {
-    if (catalogItems[choosedItem].isLiked) {
+    if (catalogItems && catalogItems[choosedItem].isLiked) {
       return;
     }
-    const newCatalog = catalogItems.map((item: CatalogComponents) => {
-      if (Number(item.id) === choosedItem + 1) {
-        return { ...item, isLiked: true, likes: item.likes + 1 };
-      }
-      return item;
-    });
-    dispatch(getCatalogComponents(newCatalog));
-    onEditComponent(
-      choosedItem + 1,
-      "likes",
-      catalogItems[choosedItem].likes + 1
-    );
+    document.documentElement.style.setProperty("--smallheartbg", `red`);
+    if (catalogItems) {
+      const newCatalog = catalogItems.map((item: CatalogComponents) => {
+        if (Number(item.id) === choosedItem + 1) {
+          return { ...item, isLiked: true, likes: item.likes + 1 };
+        }
+        return item;
+      });
+      dispatch(getCatalogComponents(newCatalog));
+      onEditComponent(
+        choosedItem + 1,
+        "likes",
+        catalogItems[choosedItem].likes + 1
+      );
+    }
   };
   const onEditComponent = async (
     id: number,
@@ -106,23 +111,26 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
       setInputError("Не менее 4-х символов");
       return;
     }
-    const newCatalog = catalogItems.map((item: CatalogComponents) => {
-      if (Number(item.id) === choosedItem + 1) {
-        return {
-          ...item,
-          reviews: [...catalogItems[choosedItem].reviews, inputValue],
-        };
-      }
-      return item;
-    });
-    setInputError("");
-    dispatch(getCatalogComponents(newCatalog));
-    onEditComponent(id, "reviews", [
-      ...catalogItems[choosedItem].reviews,
-      inputValue,
-    ]);
-    setInputValue("");
+    if (catalogItems) {
+      const newCatalog = catalogItems.map((item: CatalogComponents) => {
+        if (Number(item.id) === choosedItem + 1) {
+          return {
+            ...item,
+            reviews: [...catalogItems[choosedItem].reviews, inputValue],
+          };
+        }
+        return item;
+      });
+      setInputError("");
+      dispatch(getCatalogComponents(newCatalog));
+      onEditComponent(id, "reviews", [
+        ...catalogItems[choosedItem].reviews,
+        inputValue,
+      ]);
+      setInputValue("");
+    }
   };
+
   return (
     <div className={classes.catalogContainer}>
       <div className={classes.catalogMenu}>
@@ -178,14 +186,20 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
               {CATALOG_COMPONENTS[choosedItem]?.name || "Soon add..."}
             </span>
             <span className={classes.likesContainer}>
-              <Image
+              {/* <Image
                 width={40}
                 height={40}
                 src={likeIcon}
                 alt="likerIcon"
                 className={cn(classes.likesIcon)}
                 onClick={onLikeComponent}
-              />
+              /> */}
+              <div
+                style={{ transform: "scale(0.2)" }}
+                onClick={onLikeComponent}
+              >
+                <Heart />
+              </div>
               :&nbsp;{catalogItems ? catalogItems[choosedItem].likes : 0}
             </span>
             <div className={classes.itemReviews}>
