@@ -6,3 +6,7 @@ export const selectCatalogComponents = createSelector(
   selectCatalog,
   (state) => state.catalogComponents
 );
+export const selectNeededCatalogComponent = createSelector(
+  selectCatalog,
+  (state) => state.neededComponent
+);

@@ -3,13 +3,13 @@ import { CATALOG_COMPONENTS } from "@/constants/componentsBase";
 import axios from "axios";
 import { CatalogComponents } from "@/typing/catalog";
 import cn from "classnames";
-import Image from "next/image";
 
 import classes from "@/styles/Catalog.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getCatalogComponents,
   selectCatalogComponents,
+  selectNeededCatalogComponent,
 } from "@/store/modules/catalogComponents";
 import { editFirstSymbolToUpperCase } from "@/utils/helpers";
 import Heart from "@/components/catalogComponents/heart/heart";
@@ -28,6 +28,7 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
   const dispatch = useDispatch();
 
   const catalogItems = useSelector(selectCatalogComponents);
+  const neededComponent = useSelector(selectNeededCatalogComponent);
 
   const [choosedItem, setChoosedItem] = useState(0);
   const [pagination, setPagination] = useState(0);
@@ -35,6 +36,14 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
   const [inputError, setInputError] = useState("");
   const likeIcon =
     catalogItems && catalogItems[choosedItem]?.isLiked ? "red" : "white";
+
+  useEffect(() => {
+    catalogItems?.map((item, index) => {
+      if (item.name.includes(neededComponent)) {
+        setChoosedItem(index + pagination * 8);
+      }
+    });
+  }, [neededComponent]);
 
   useEffect(() => {
     if (!catalog) {

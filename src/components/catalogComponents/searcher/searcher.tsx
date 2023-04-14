@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import classes from "@/styles/catalogComponents/Searcher.module.css";
 import cn from "classnames";
 import Image from "next/image";
 interface SearcherProps {
   inputValue?: string;
   onChangeInputValue?: (value: string) => void;
+  onSearchItem?: (value: string) => void;
 }
 const Searcher: React.FC<SearcherProps> = ({
   inputValue,
   onChangeInputValue,
+  onSearchItem,
 }) => {
   const [searcherValue, setSearcherValue] = useState(inputValue);
   const [isSearcherActive, setIsSearcherActive] = useState(false);
 
-  const onSetSearcherValue = (value: string) => {
-    setSearcherValue(value);
-    onChangeInputValue && onChangeInputValue(value);
+  const onSetSearcherValue = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setSearcherValue(e.target.value);
+    onChangeInputValue && onChangeInputValue(e.target.value);
   };
 
   const onOpenSearcher = (e: React.MouseEvent<HTMLElement>) => {
@@ -25,8 +28,18 @@ const Searcher: React.FC<SearcherProps> = ({
   const onReturnBtn = () => {
     setIsSearcherActive(false);
   };
+  const handleSubmit = (e: FormEvent<HTMLElement>) => {
+    e.preventDefault();
+    if (!onSearchItem) {
+      return;
+    }
+    searcherValue && onSearchItem(searcherValue);
+  };
   return (
-    <form className={cn(classes.searcherContainer)}>
+    <form
+      className={cn(classes.searcherContainer)}
+      onSubmit={(e) => handleSubmit(e)}
+    >
       {isSearcherActive ? (
         <div
           className={cn(classes.inputContainer, {
@@ -38,7 +51,7 @@ const Searcher: React.FC<SearcherProps> = ({
             value={searcherValue}
             placeholder="Поиск"
             className={cn(classes.inputBlock)}
-            onChange={(e) => onSetSearcherValue(e.target.value)}
+            onChange={(e) => onSetSearcherValue(e)}
           />
           <div className={classes.searcherIconBlock}>
             <Image

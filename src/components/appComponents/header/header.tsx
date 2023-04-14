@@ -1,16 +1,30 @@
 import Searcher from "@/components/catalogComponents/searcher";
 import { APP_THEMES_RIGHT, APP_THEME_LEFT } from "@/constants/componentsBase";
 import { chooseThemeColor, selectThemeColor } from "@/store/modules/appTheme";
+import { getNeededCatalogComponent } from "@/store/modules/catalogComponents";
 import cn from "classnames";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 const Header = () => {
   const dispatch = useDispatch();
+  const location = useRouter();
   const appThemesStore = useSelector(selectThemeColor);
   const [appThemes, setAppThemes] = useState(appThemesStore);
   const [searchValue, setSearchValue] = useState("");
+
+  useEffect(() => {
+    document.documentElement.style.setProperty(
+      "--leftRange",
+      `${APP_THEME_LEFT}`
+    );
+    document.documentElement.style.setProperty(
+      "--rightRange",
+      `${APP_THEMES_RIGHT}`
+    );
+  }, []);
 
   const changeFirstTheme = (index: string) => {
     setAppThemes({ ...appThemes, left: Number(index) });
@@ -28,23 +42,22 @@ const Header = () => {
     );
     dispatch(chooseThemeColor({ ...appThemes, right: Number(index) }));
   };
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--leftRange",
-      `${APP_THEME_LEFT}`
-    );
-    document.documentElement.style.setProperty(
-      "--rightRange",
-      `${APP_THEMES_RIGHT}`
-    );
-  }, []);
+
+  const onSearchComponent = (value: string) => {
+    dispatch(getNeededCatalogComponent(value));
+  };
   return (
     <header>
       <div className="headerText">
-        <Searcher
-          inputValue={searchValue}
-          onChangeInputValue={setSearchValue}
-        />
+        <div>
+          {location.pathname === "/catalog" && (
+            <Searcher
+              inputValue={searchValue}
+              onChangeInputValue={setSearchValue}
+              onSearchItem={onSearchComponent}
+            />
+          )}
+        </div>
         <Link href="/" className="appName">
           <span className="firstText">Animation</span>
           <span className="secondText">Variation</span>
