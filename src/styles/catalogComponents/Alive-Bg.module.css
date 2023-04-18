@@ -1,0 +1,16 @@
+.aliveBgContainer {
+  position: absolute;
+  top: 0;
+  left: -300px;
+  width: 600px;
+  height: 500px;
+  border-radius: 30px;
+  border: 1px solid black;
+  background: linear-gradient(red, yellow, green, blue, red);
+  animation: alive 50s linear infinite;
+}
+@keyframes alive {
+  from {
+    background-position: 0px -3000px;
+  }
+}

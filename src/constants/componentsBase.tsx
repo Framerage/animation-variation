@@ -1,3 +1,4 @@
+import AliveBg from "@/components/catalogComponents/alive-bg/alive-bg";
 import AppMenu from "@/components/catalogComponents/appMenu";
 import BulkCube from "@/components/catalogComponents/bulkCube";
 import Heart from "@/components/catalogComponents/heart/heart";
@@ -25,6 +26,10 @@ export const CATALOG_COMPONENTS: { name: string; component?: ReactNode }[] = [
   {
     name: "heart",
     component: <Heart />,
+  },
+  {
+    name: "alive-bg",
+    component: <AliveBg />,
   },
 ];
 export const APP_THEME_LEFT = [
