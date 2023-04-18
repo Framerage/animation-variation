@@ -12,7 +12,11 @@ export default function Home() {
     { name: "About", image: "/assets/images/aboutBtn.png", link: "/about" },
     { name: "Ideas", image: "/assets/images/ideasBtn.png", link: "" },
     { name: "Games", image: "/assets/images/gamesBtn.png", link: "" },
-    { name: "Statistic", image: "/assets/images/statisticBtn.png", link: "" },
+    {
+      name: "Statistic",
+      image: "/assets/images/statisticBtn.png",
+      link: "/statistic",
+    },
     {
       name: "Reviews",
       image: "/assets/images/reviewsBtn.png",

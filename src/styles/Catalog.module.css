@@ -100,14 +100,14 @@
 }
 .itemReviews {
   position: absolute;
-  width: 200px;
+  width: 280px;
   min-height: 200px;
   max-height: 300px;
   background: linear-gradient(45deg, grey, white, grey);
   border: 6px double black;
   border-radius: 20px;
-  top: 50px;
-  left: 0;
+  top: 70px;
+  left: -140px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -125,7 +125,7 @@
   margin-bottom: 15px;
 }
 .review {
-  width: 160px;
+  width: 255px;
   word-wrap: break-word;
   border-bottom: 1px solid black;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -144,8 +144,9 @@
   border-radius: 20px;
 }
 .reviewsInput {
-  min-width: 145px;
-  max-width: 145px;
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
   min-height: 35px;
   max-height: 150px;
   background-color: white;

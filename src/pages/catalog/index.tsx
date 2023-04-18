@@ -108,12 +108,16 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
       window.alert("Не угадал");
     }
   };
-  const onUsePagination = () => {
+  const onUseBackPagination = () => {
     catalogItems && pagination !== 0 && setPagination(pagination - 1);
+  };
+  const onUseForwardPagination = () => {
     catalogItems &&
-      pagination !== Math.round(catalogItems.length / 8) &&
+      catalogItems.length % 8 !== 0 &&
+      pagination !== Math.floor(catalogItems.length / 8) &&
       setPagination(pagination + 1);
   };
+
   const onAddReview = (e: React.FormEvent<HTMLFormElement>, id: number) => {
     e.preventDefault();
     if (inputValue.length < 4) {
@@ -149,7 +153,7 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
             className={cn(classes.menuArrow, {
               [classes.disabledArrow]: pagination === 0,
             })}
-            onClick={onUsePagination}
+            onClick={onUseBackPagination}
           >
             &#60;
           </div>
@@ -177,10 +181,11 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
           <div
             className={cn(classes.menuArrow, {
               [classes.disabledArrow]:
-                catalogItems &&
-                pagination === Math.round(catalogItems.length / 8),
+                (catalogItems &&
+                  pagination === Math.floor(catalogItems.length / 8)) ||
+                (catalogItems && catalogItems.length % 8 === 0),
             })}
-            onClick={onUsePagination}
+            onClick={onUseForwardPagination}
           >
             &#62;
           </div>
@@ -195,21 +200,18 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
               {CATALOG_COMPONENTS[choosedItem]?.name || "Soon add..."}
             </span>
             <span className={classes.likesContainer}>
-              {/* <Image
-                width={40}
-                height={40}
-                src={likeIcon}
-                alt="likerIcon"
-                className={cn(classes.likesIcon)}
-                onClick={onLikeComponent}
-              /> */}
               <div
                 style={{ transform: "scale(0.2)" }}
                 onClick={onLikeComponent}
               >
                 <Heart />
               </div>
-              :&nbsp;{catalogItems ? catalogItems[choosedItem].likes : 0}
+              :&nbsp;
+              {catalogItems &&
+              catalogItems.length &&
+              catalogItems[choosedItem].likes
+                ? catalogItems[choosedItem].likes
+                : 0}
             </span>
             <div className={classes.itemReviews}>
               <div className={classes.reviewsBlock}>
@@ -234,7 +236,6 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
               >
                 <textarea
                   title="Не менее 4-х символов"
-                  // type="text"
                   className={classes.reviewsInput}
                   placeholder="Напишите отзыв"
                   value={inputValue}

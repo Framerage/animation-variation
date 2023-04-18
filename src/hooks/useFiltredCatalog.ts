@@ -10,5 +10,5 @@ export const useFiltredCatalog = (
       return componentList;
     }
     return componentList.filter((item) => item.name.includes(searchValue));
-  }, []);
+  }, [componentList, searchValue]);
 };

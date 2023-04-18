@@ -1,0 +1,40 @@
+.statisticContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.statisticHeader {
+  font-size: 28px;
+  padding: 5px;
+  text-shadow: 0 0 5px turquoise, 0 0 10px white, 0 0 25px turquoise,
+    0 0 30px white;
+}
+.statisticContent {
+  width: 100%;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.statisticMenu {
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.menuItem {
+  list-style: none;
+  cursor: pointer;
+}
+.activeItem {
+  animation: pulse 1s alternate-reverse infinite;
+}
+@keyframes pulse {
+  0% {
+    text-shadow: 0 0 5px turquoise, 0 0 10px white, 0 0 25px turquoise;
+  }
+  100% {
+    text-shadow: 0 0 15px turquoise, 0 0 20px white, 0 0 25px turquoise;
+  }
+}
