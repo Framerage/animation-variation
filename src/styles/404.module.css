@@ -1,0 +1,8 @@
+.notFoundLink {
+  font-size: 18px;
+  color: black;
+}
+.notFoundLink > a {
+  text-decoration: none;
+  color: black;
+}

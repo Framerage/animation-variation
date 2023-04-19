@@ -17,6 +17,10 @@
   align-items: center;
   justify-content: center;
 }
+.chartBlock {
+  width: 800px;
+  min-height: 300px;
+}
 .statisticMenu {
   min-width: 300px;
   display: flex;

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { CatalogComponents } from "@/typing/catalog";
-import cn from "classnames";
 import classes from "@/styles/statistic/Statistic.module.css";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { Bar } from "react-chartjs-2";
+import StatisticHeader from "./components/StatisticHeader/StatisticHeader";
+import { GRAPHIC_COLORS } from "@/constants/utils";
 
 Chart.register(CategoryScale);
 
@@ -43,27 +44,7 @@ const Statistic = ({
           return String(item[choosedGraphic as keyof CatalogComponents]);
         }),
         label: choosedGraphic,
-        backgroundColor: [
-          "red",
-          "yellow",
-          "green",
-          "blue",
-          "purple",
-          "orange",
-          "grey",
-          "white",
-          "black",
-          "yellowgreen",
-          "orangered",
-          "turquoise",
-          "lightblue",
-          "darkblue",
-          "darkcyan",
-          "darkgoldenrod",
-          "darkgray",
-          "darkgreen",
-          "oceanblue",
-        ],
+        backgroundColor: GRAPHIC_COLORS,
       },
     ],
   });
@@ -84,49 +65,22 @@ const Statistic = ({
             return String(item[choosedGraphic as keyof CatalogComponents]);
           }),
           label: choosedGraphic,
-          backgroundColor: [
-            "red",
-            "yellow",
-            "green",
-            "blue",
-            "purple",
-            "orange",
-            "grey",
-            "white",
-            "black",
-            "yellowgreen",
-            "orangered",
-            "turquoise",
-            "lightblue",
-            "darkblue",
-            "darkcyan",
-            "darkgoldenrod",
-            "darkgray",
-            "darkgreen",
-            "oceanblue",
-          ],
+          backgroundColor: GRAPHIC_COLORS,
         },
       ],
     });
   }, [choosedGraphic]);
   return (
     <div className={classes.statisticContainer}>
-      <h1 className={classes.statisticHeader}>Components statistic</h1>
-      <div className={classes.statisticMenu}>
-        {statisticMenu.map((item) => (
-          <li
-            key={item.key}
-            onClick={() => onChooseGraphic(item.key)}
-            className={cn(classes.menuItem, {
-              [classes.activeItem]: choosedGraphic === item.key,
-            })}
-          >
-            {item.name}
-          </li>
-        ))}
-      </div>
+      <StatisticHeader
+        menuItems={statisticMenu}
+        onChooseGraphic={onChooseGraphic}
+        choosedGraphicKey={choosedGraphic}
+      />
       <div className={classes.statisticContent}>
-        <Bar data={barChartData} width="20px" height="5px" />
+        <div className={classes.chartBlock}>
+          <Bar data={barChartData} width="20px" height="5px" />
+        </div>
       </div>
     </div>
   );

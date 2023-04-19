@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-
+import classes from "@/styles/404.module.css";
 const NotFoundPage = () => {
   const location = useRouter();
   const [timeCounter, setTimeCounter] = useState(3);
@@ -17,8 +17,8 @@ const NotFoundPage = () => {
     <div className="notFound">
       <h1>Ой..</h1>
       <h2>Такой страницы не существует</h2>
-      <p>
-        <Link href="/">На главную </Link>
+      <p className={classes.notFoundLink}>
+        <Link href="/">На главную</Link>
         через {timeCounter}
       </p>
     </div>
