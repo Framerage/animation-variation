@@ -1,10 +1,10 @@
-import AliveBg from "@/components/catalogComponents/alive-bg/alive-bg";
+import AliveBg from "@/components/catalogComponents/alive-bg";
 import AppMenu from "@/components/catalogComponents/appMenu";
 import BulkCube from "@/components/catalogComponents/bulkCube";
-import DotLoader from "@/components/catalogComponents/dotLoader/dotLoader";
-import Heart from "@/components/catalogComponents/heart/heart";
-import Loader from "@/components/catalogComponents/loader/loader";
-import PointLoader from "@/components/catalogComponents/pointLoader/pointLoader";
+import DotLoader from "@/components/catalogComponents/dotLoader";
+import Heart from "@/components/catalogComponents/heart";
+import Loader from "@/components/catalogComponents/loader";
+import PointLoader from "@/components/catalogComponents/pointLoader";
 import Searcher from "@/components/catalogComponents/searcher";
 import { ReactNode } from "react";
 
