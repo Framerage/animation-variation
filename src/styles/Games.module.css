@@ -1,0 +1,124 @@
+.gamesContainer {
+  width: 100%;
+  min-height: 400px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 100px;
+  border: 4px double white;
+  border-radius: 50px;
+  background-color: black;
+  position: relative;
+}
+.pageTitle {
+  color: black;
+  text-shadow: 0 0 5px blue, 0 0 10px white, 0 0 15px blue, 0 0 20px white,
+    0 0 25px blue;
+  padding: 10px;
+}
+.gamesContent {
+  width: 95%;
+  min-height: 550px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.previewBlock {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  transform-style: preserve-3d;
+  animation: animateCube 20s linear infinite;
+  margin-top: 100px;
+  margin-left: 200px;
+}
+@keyframes animateCube {
+  0% {
+    transform: rotateX(-30deg) rotateY(0deg);
+  }
+  100% {
+    transform: rotateX(-30deg) rotateY(360deg);
+  }
+}
+.previewBlock .item {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+}
+.previewBlock .item .itemWall {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(60deg, yellow, rgb(255, 140, 0), red, black); */
+}
+.itemShadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+  /* background: #222; */
+  transform-style: preserve-3d;
+  transform: rotateX(90deg) translateZ(100px);
+}
+.itemShadow::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 50px;
+  width: 100px;
+  height: 100px;
+  animation: flame 4.5s linear infinite;
+  border-radius: 30%;
+  box-shadow: 0 0 50px rgb(79, 3, 3), 0 0 100px red, 0 0 150px orange,
+    0 0 100px yellow, 0 0 200px yellow;
+  filter: blur(20px);
+  transition: 2s linear infinite;
+}
+@keyframes flame {
+  0% {
+    transform: scale(1) translateZ(-400px);
+  }
+  50% {
+    transform: scale(1.6) translateZ(-400px);
+  }
+  100% {
+    transform: scale(1) translateZ(-400px);
+  }
+}
+.controlBlock {
+  min-width: 300px;
+  max-width: 600px;
+  min-height: 200px;
+  max-height: 500px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.controlItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.controlTitle {
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Courier New", Courier, monospace;
+  padding: 0 10px;
+}
+.controlField {
+  min-width: 30px;
+  max-width: 60px;
+  color: black;
+  padding: 0 5px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
