@@ -1,8 +1,43 @@
 import React, { useCallback, useMemo, useState } from "react";
 import classes from "@/styles/Games.module.css";
 const Games = () => {
-  const [wallCounter, setWallCounter] = useState(6);
+  const [wallCounter, setWallCounter] = useState(4);
   const [wallWidth, setWallWidth] = useState(200);
+  const [wallHeight, setWallHeight] = useState(200);
+  const [wallIndent, setWallIndent] = useState(100); //width/2
+
+  const params = useMemo(() => {
+    return [
+      {
+        name: "Width",
+        min: 0,
+        max: 1000,
+        value: wallWidth,
+        setValue: setWallWidth,
+      },
+      {
+        name: "Height",
+        min: 0,
+        max: 1000,
+        value: wallHeight,
+        setValue: setWallHeight,
+      },
+      {
+        name: "Walls",
+        min: 0,
+        max: 150,
+        value: wallCounter,
+        setValue: setWallCounter,
+      },
+      {
+        name: "Отступ от центра",
+        min: 0,
+        max: 500,
+        value: wallIndent,
+        setValue: setWallIndent,
+      },
+    ];
+  }, [wallHeight, wallCounter, wallWidth, wallIndent]);
   const figureWalls = useMemo(() => {
     if (wallCounter < 0) {
       return [];
@@ -13,18 +48,21 @@ const Games = () => {
   const wallStyle = useCallback(
     (elem: number) => {
       return {
-        transform: `rotateY(calc(360deg / ${figureWalls.length}*${elem} )) translateZ(175px)`,
+        transform: `rotateY(calc(360deg / ${figureWalls.length}*${elem} )) translateZ(${wallIndent}px)`,
         background:
           "linear-gradient(60deg, blue, rgb(255, 140, 0), blue, black)",
+        borderRadius: "10px",
       };
     },
-    [wallCounter]
+    [wallIndent, figureWalls]
   );
   const wallParams = useCallback(() => {
     return {
       width: `${wallWidth}px`,
+      height: `${wallHeight}px`,
     };
-  }, [wallWidth]);
+  }, [wallWidth, wallHeight]);
+
   return (
     <div className={classes.gamesContainer}>
       <h1 className={classes.pageTitle}>Create your figure</h1>
@@ -42,28 +80,19 @@ const Games = () => {
           </div>
         </div>
         <div className={classes.controlBlock}>
-          <div className={classes.controlItem}>
-            <span className={classes.controlTitle}>Walls:</span>
-            <input
-              type="number"
-              value={wallCounter}
-              min={0}
-              max={150}
-              onChange={(e) => setWallCounter(Number(e.target.value))}
-              className={classes.controlField}
-            />
-          </div>
-          <div className={classes.controlItem}>
-            <span className={classes.controlTitle}>Width:</span>
-            <input
-              type="number"
-              value={wallWidth}
-              min={0}
-              max={1100}
-              onChange={(e) => setWallWidth(Number(e.target.value))}
-              className={classes.controlField}
-            />
-          </div>
+          {params.map((param) => (
+            <div className={classes.controlItem}>
+              <span className={classes.controlTitle}>{param.name}</span>
+              <input
+                type="number"
+                value={param.value}
+                min={param.min}
+                max={param.max}
+                onChange={(e) => param.setValue(Number(e.target.value))}
+                className={classes.controlField}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>

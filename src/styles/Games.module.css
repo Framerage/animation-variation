@@ -30,8 +30,8 @@
   height: 200px;
   transform-style: preserve-3d;
   animation: animateCube 20s linear infinite;
-  margin-top: 100px;
-  margin-left: 200px;
+  margin-top: 150px;
+  margin-left: 400px;
 }
 @keyframes animateCube {
   0% {
@@ -44,7 +44,7 @@
 .previewBlock .item {
   position: absolute;
   top: 0;
-  left: 0px;
+  left: 0;
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
@@ -117,8 +117,10 @@
 .controlField {
   min-width: 30px;
   max-width: 60px;
-  color: black;
+  background-color: black;
   padding: 0 5px;
-  border: 2px solid black;
+  font-family: "Courier New", Courier, monospace;
+  border: 2px solid white;
+  color: white;
   border-radius: 10px;
 }
