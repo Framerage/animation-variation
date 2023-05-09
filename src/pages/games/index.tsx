@@ -5,7 +5,13 @@ const Games = () => {
   const [wallWidth, setWallWidth] = useState(200);
   const [wallHeight, setWallHeight] = useState(200);
   const [wallIndent, setWallIndent] = useState(100); //width/2
+  const [wallBorderRadius, setWallBorderRadius] = useState(0);
+  const [wallIncline, setWallIncline] = useState(0);
 
+  const [firstColor, setFirstColor] = useState("blue");
+  const [secondColor, setSecondColor] = useState("orange");
+
+  const [borderColor, setBorderColor] = useState("black");
   const params = useMemo(() => {
     return [
       {
@@ -30,14 +36,36 @@ const Games = () => {
         setValue: setWallCounter,
       },
       {
-        name: "Отступ от центра",
+        name: "Indent",
         min: 0,
         max: 500,
         value: wallIndent,
         setValue: setWallIndent,
       },
+      {
+        name: "Border radius",
+        min: 0,
+        max: 500,
+        value: wallBorderRadius,
+        setValue: setWallBorderRadius,
+      },
+      {
+        name: "Incline",
+        min: -180,
+        max: 180,
+        value: wallIncline,
+        setValue: setWallIncline,
+      },
     ];
-  }, [wallHeight, wallCounter, wallWidth, wallIndent]);
+  }, [
+    wallHeight,
+    wallCounter,
+    wallWidth,
+    wallIndent,
+    wallBorderRadius,
+    wallIncline,
+  ]);
+
   const figureWalls = useMemo(() => {
     if (wallCounter < 0) {
       return [];
@@ -48,13 +76,23 @@ const Games = () => {
   const wallStyle = useCallback(
     (elem: number) => {
       return {
-        transform: `rotateY(calc(360deg / ${figureWalls.length}*${elem} )) translateZ(${wallIndent}px)`,
-        background:
-          "linear-gradient(60deg, blue, rgb(255, 140, 0), blue, black)",
-        borderRadius: "10px",
+        transform: `rotateY(calc(360deg / ${figureWalls.length}*${elem} )) rotateX(${wallIncline}deg) translateZ(${wallIndent}px)`,
+        background: secondColor
+          ? `linear-gradient(60deg, ${firstColor}, ${secondColor})`
+          : `${firstColor}`,
+        borderRadius: `${wallBorderRadius}px`,
+        border: borderColor ? `1px solid ${borderColor}` : "none",
       };
     },
-    [wallIndent, figureWalls]
+    [
+      wallIndent,
+      figureWalls,
+      wallBorderRadius,
+      wallIncline,
+      firstColor,
+      secondColor,
+      borderColor,
+    ]
   );
   const wallParams = useCallback(() => {
     return {
@@ -93,6 +131,37 @@ const Games = () => {
               />
             </div>
           ))}
+          <div className={classes.controlItem}>
+            <span
+              className={classes.previewColor}
+              style={{ backgroundColor: `${firstColor}` }}
+            ></span>
+            <input
+              type="text"
+              value={firstColor}
+              onChange={(e) => setFirstColor(e.target.value)}
+              className={classes.controlField}
+            />
+            <span
+              className={classes.previewColor}
+              style={{ backgroundColor: `${secondColor}` }}
+            ></span>
+            <input
+              type="text"
+              value={secondColor}
+              onChange={(e) => setSecondColor(e.target.value)}
+              className={classes.controlField}
+            />
+          </div>
+          <div className={classes.controlItem}>
+            <span className={classes.controlTitle}>Border color</span>
+            <input
+              type="text"
+              value={borderColor}
+              onChange={(e) => setBorderColor(e.target.value)}
+              className={classes.controlField}
+            />
+          </div>
         </div>
       </div>
     </div>
