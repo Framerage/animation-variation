@@ -43,14 +43,14 @@ export const CATALOG_COMPONENTS: { name: string; component?: ReactNode }[] = [
   },
 ];
 export const APP_THEME_LEFT = [
+  "white",
+  "lightblue",
   "red",
   "orange",
   "yellow",
   "yellowgreen",
   "green",
   "blue",
-  "lightblue",
-  "white",
 ];
 export const APP_THEMES_RIGHT = [
   "lightpink",

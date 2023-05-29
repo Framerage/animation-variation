@@ -3,9 +3,9 @@
 :root {
   --firstText: greenyellow;
   --secondText: orangered;
-  --firstTheme: red;
+  --firstTheme: black;
   --secondTheme: white;
-  --leftRange: pink;
+  --leftRange: black;
   --rightRange: lightblue;
   --smallheartbg: white;
 }

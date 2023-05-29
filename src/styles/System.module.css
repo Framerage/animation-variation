@@ -1,0 +1,14 @@
+.systemsContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid white;
+  color: white;
+  background-color: black;
+  margin: 0 50px;
+  font-family: "Times New Roman", Times, serif;
+}
+.timeItem {
+  font-family: "Times New Roman", Times, serif;
+}
