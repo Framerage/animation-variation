@@ -11,6 +11,13 @@
   background-color: black;
   position: relative;
 }
+.gamesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 20px;
+}
 .pageTitle {
   color: black;
   text-shadow: 0 0 5px blue, 0 0 10px white, 0 0 15px blue, 0 0 20px white,

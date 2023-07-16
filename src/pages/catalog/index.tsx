@@ -13,6 +13,7 @@ import {
 } from "@/store/modules/catalogComponents";
 import { editFirstSymbolToUpperCase } from "@/utils/helpers";
 import Heart from "@/components/catalogComponents/heart/heart";
+import BackBtn from "@/components/appComponents/backBtn/backBtn";
 
 export async function getServerSideProps() {
   const resp = await axios(
@@ -147,7 +148,11 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
   return (
     <div className={classes.catalogContainer}>
       <div className={classes.catalogMenu}>
-        <h2 className={classes.catalogHeader}>Find your favorite animation</h2>
+        <div className={classes.catalogHeader}>
+          <BackBtn />
+          <h2 className={classes.headerText}>Find your favorite animation</h2>
+          <div className={classes.helpInfo}>{"?"}</div>
+        </div>
         <div className={classes.menuContainer}>
           <div
             className={cn(classes.menuArrow, {

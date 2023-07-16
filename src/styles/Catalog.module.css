@@ -19,10 +19,28 @@
   min-width: 1100px;
 }
 .catalogHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
   margin-top: 20px;
+}
+.headerText {
   font-size: 40px;
   color: black;
   text-shadow: 0 0 5px greenyellow, 0 0 10px green, 0 0 15px yellowgreen;
+}
+.helpInfo {
+  width: 35px;
+  height: 35px;
+  background: linear-gradient(-45deg, black, grey, white, grey, black);
+  border: 2px solid white;
+  border-radius: 50%;
+  font-size: 20px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .menuContainer {
   margin: 0 auto;

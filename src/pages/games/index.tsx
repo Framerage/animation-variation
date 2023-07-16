@@ -1,5 +1,6 @@
 import React, { useCallback, useMemo, useState } from "react";
 import classes from "@/styles/Games.module.css";
+import BackBtn from "@/components/appComponents/backBtn";
 const Games = () => {
   const [wallCounter, setWallCounter] = useState(4);
   const [wallWidth, setWallWidth] = useState(200);
@@ -103,7 +104,11 @@ const Games = () => {
 
   return (
     <div className={classes.gamesContainer}>
-      <h1 className={classes.pageTitle}>Create your figure</h1>
+      <div className={classes.gamesHeader}>
+        <BackBtn />
+        <h1 className={classes.pageTitle}>Create your figure</h1>
+        <div>{"_"}</div>
+      </div>
       <div className={classes.gamesContent}>
         <div className={classes.previewBlock} style={wallParams()}>
           <div className={classes.itemShadow}></div>
