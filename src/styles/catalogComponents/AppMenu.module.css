@@ -25,6 +25,9 @@
   transition: transform 1.5s;
   border-radius: 50%;
 }
+.menuToggle:hover {
+  filter: drop-shadow(0 5px 15px white);
+}
 .toggleImage {
   animation: pulse 2s alternate-reverse infinite;
 }

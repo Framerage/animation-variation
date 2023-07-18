@@ -39,6 +39,9 @@ const Catalog = ({ catalog }: { catalog: CatalogComponents[] }) => {
     catalogItems && catalogItems[choosedItem]?.isLiked ? "red" : "white";
 
   useEffect(() => {
+    window.scrollTo(0, 150);
+  }, []);
+  useEffect(() => {
     catalogItems?.map((item, index) => {
       if (item.name.includes(neededComponent)) {
         setChoosedItem(index + pagination * 8);

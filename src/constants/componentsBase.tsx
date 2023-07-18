@@ -4,6 +4,7 @@ import BulkCube from "@/components/catalogComponents/bulkCube";
 import DotLoader from "@/components/catalogComponents/dotLoader";
 import Heart from "@/components/catalogComponents/heart";
 import Loader from "@/components/catalogComponents/loader";
+import Menu3d from "@/components/catalogComponents/menu-3d/menu3d";
 import PointLoader from "@/components/catalogComponents/pointLoader";
 import Searcher from "@/components/catalogComponents/searcher";
 import { ReactNode } from "react";
@@ -40,6 +41,10 @@ export const CATALOG_COMPONENTS: { name: string; component?: ReactNode }[] = [
   {
     name: "dot-loader",
     component: <DotLoader />,
+  },
+  {
+    name: "menu-3d",
+    component: <Menu3d />,
   },
 ];
 export const APP_THEME_LEFT = [
