@@ -2,6 +2,7 @@ import AliveBg from "@/components/catalogComponents/alive-bg";
 import AppMenu from "@/components/catalogComponents/appMenu";
 import BulkCube from "@/components/catalogComponents/bulkCube";
 import DotLoader from "@/components/catalogComponents/dotLoader";
+import FlowerMenu from "@/components/catalogComponents/flowerMenu/FlowerMenu";
 import Heart from "@/components/catalogComponents/heart";
 import Loader from "@/components/catalogComponents/loader";
 import Menu3d from "@/components/catalogComponents/menu-3d/menu3d";
@@ -45,6 +46,10 @@ export const CATALOG_COMPONENTS: { name: string; component?: ReactNode }[] = [
   {
     name: "menu-3d",
     component: <Menu3d />,
+  },
+  {
+    name: "flower",
+    component: <FlowerMenu />,
   },
 ];
 export const APP_THEME_LEFT = [

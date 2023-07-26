@@ -2,7 +2,7 @@
   width: 300px;
   height: 300px;
   position: relative;
-  /* animation: rotat 15s linear infinite; */
+  animation: rotat 15s linear infinite;
 }
 @keyframes rotat {
   0% {
