@@ -1,5 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+mock log: igo...7395..
+ps: i9..1
 ## Getting Started
 
 First, run the development server:
