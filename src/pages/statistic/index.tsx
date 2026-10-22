@@ -5,12 +5,12 @@ import classes from "@/styles/statistic/Statistic.module.css";
 import Chart from "chart.js/auto";
 import { CategoryScale } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import StatisticHeader from "./components/StatisticHeader/StatisticHeader";
+import StatisticHeader from "@/components/statisticComponents/StatisticHeader";
 import { GRAPHIC_COLORS } from "@/constants/utils";
 
 Chart.register(CategoryScale);
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const resp = await axios(
     "https://640adea265d3a01f98095963.mockapi.io/catalog"
   );

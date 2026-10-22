@@ -15,7 +15,7 @@ import { editFirstSymbolToUpperCase } from "@/utils/helpers";
 import Heart from "@/components/catalogComponents/heart/heart";
 import BackBtn from "@/components/appComponents/backBtn/backBtn";
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   const resp = await axios(
     "https://640adea265d3a01f98095963.mockapi.io/catalog"
   );

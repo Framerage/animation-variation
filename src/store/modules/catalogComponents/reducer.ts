@@ -5,15 +5,16 @@ interface CatalogInitialState {
   catalogComponents: CatalogComponents[] | null;
   neededComponent: string;
 }
-const initialState = {
+const initialState: CatalogInitialState = {
   catalogComponents: null,
   neededComponent: "",
 };
-export const catalog = createReducer<CatalogInitialState>(initialState, {
-  [getCatalogComponents.type]: (state, action) => {
-    state.catalogComponents = action.payload;
-  },
-  [getNeededCatalogComponent.type]: (state, action) => {
-    state.neededComponent = action.payload;
-  },
+export const catalog = createReducer(initialState, (builder) => {
+  builder
+    .addCase(getCatalogComponents, (state, action) => {
+      state.catalogComponents = action.payload;
+    })
+    .addCase(getNeededCatalogComponent, (state, action) => {
+      state.neededComponent = action.payload;
+    });
 });
